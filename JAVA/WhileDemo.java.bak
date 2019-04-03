@@ -7,7 +7,9 @@ public class WhileDemo
 	while(i<=100){
 	    sum = sum + i;
 	    i=i+1;
+	
 	}		
 	System.out.print(sum);
 	}
+
 }

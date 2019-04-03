@@ -4,7 +4,8 @@ public class Practice1
 	{
 	for(int i=1 ;i<10;i++)
 		{
-	}	
+			
+		}	
 	}
-	System.out.print(" * ");
+	System.out.print();
 }
