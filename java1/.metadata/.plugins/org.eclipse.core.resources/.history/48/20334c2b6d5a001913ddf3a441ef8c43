@@ -1,0 +1,41 @@
+package com.neuedu.practice;
+
+import java.util.Scanner;
+
+public class User {
+	
+	public User()
+	{
+		username = new String[] {"hello"};
+		password = new String[] {"123456"};
+	}
+	String[] username;
+	String[] password;
+	public boolean checkuser(String username,String password) 
+	{
+		for (int i=0;i<username.length();i++)
+		{
+			if (username.equals(username) && password.equals(password))
+			{
+				return true;
+		
+			}
+			
+		}
+		return false;
+		
+	}
+	public static void main (String[] args)
+	{
+		User user = new User();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("ÇëÊäÈëÓÃ»§Ãû");
+		String username = scanner.next();
+		System.out.println("ÇëÊäÈëÃÜÂë");
+		String password = scanner.next();
+		boolean checkuser = user.checkuser(username, password);
+		System.out.print(checkuser == true ? "µÇÂ½³É¹¦":"µÇÂ¼Ê§°Ü");
+		scanner.close();
+	}
+	
+}

@@ -1,0 +1,47 @@
+
+package practice;
+
+public class Circle {
+	public Circle(int r)
+	{
+		this.r= r;
+	}
+	public Circle(Point p,int r)
+	{
+		this.p=p;
+		this.r=r;
+	}
+	Point p;	
+	int r;
+	public  double Square() {
+		return r*r*3.14;
+	}
+	public boolean contain(Point p1)
+	{
+		boolean result = Math.pow((p.x-p1.x), 2)+Math.pow((p.y-p1.y), 2) >= r*r;
+		return result;
+	}
+
+	public static void main(String[] args)
+	{
+		Circle circle = new Circle(2);
+		double square = circle.Square();
+		System.out.print(square);
+		Point certer = new Point(0,0);
+		
+	}
+}
+ class Point
+{
+	 public Point() 
+	 {
+		  
+	 }
+	 public Point (int x,int y ) 
+	 {
+		 this.x = x;
+		 this.y = y;
+	 }
+	int x;
+	int y;
+}

@@ -1,0 +1,41 @@
+package practice;
+
+public class Person {
+
+		String num;
+		String name;
+		char sex;
+		int age;
+		String id;
+		String address;
+		boolean ismarry;
+		String phonenum;
+		String name1;
+		public boolean getmarry(Person apersorn)
+		{
+			
+			return false;
+		}
+		public static void main(String[] args) {
+			
+		}
+}
+class MarryHouse
+{
+	public boolean marry(Person p1,Person p2) 
+	{
+		if (p1.sex != p2.sex)
+		{
+			if (p1.age>=20 && p2.age>=22 && p1.sex =='ÄĞ'|| p2.age>=20 && p1.age>=22 && p1.sex=='Å®')
+			{
+				if(!p1.ismarry && !p2.ismarry)
+				{
+					p1.ismarry = true;
+					p2.ismarry = true;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+}

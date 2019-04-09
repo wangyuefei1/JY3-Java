@@ -1,0 +1,19 @@
+
+package practice;
+import java.awt.Point;
+class Circle {
+	public Circle(){
+		r = 2 ;
+
+	}
+	int r;
+	Point point;
+	public  double Square() {
+		return r*r*3.14;
+	}
+	public static void main(String[] args) {
+		Circle circle = new Circle();
+		double square = circle.Square();
+		System.out.print(square);
+	}
+}

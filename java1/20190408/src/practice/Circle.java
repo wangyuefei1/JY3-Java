@@ -1,0 +1,50 @@
+
+package practice;
+
+public class Circle {
+	public Circle(int r)
+	{
+		this.r= r;
+	}
+	public Circle(Point p,int r)
+	{
+		this.p=p;
+		this.r=r;
+	}
+	Point p;	
+	int r;
+	public  double Square() {
+		return r*r*3.14;
+	}
+	public boolean contain(Point p1)
+	{
+		boolean result = Math.pow((p.x-p1.x), 2)+Math.pow((p.y-p1.y), 2) <= r*r;
+		return result;
+	}
+
+	public static void main(String[] args)
+	{
+		Circle circle = new Circle(2);
+		double square = circle.Square();
+		System.out.print(square);
+		Point center = new Point(0,0);
+		Circle circle1 = new Circle (center,2);
+		Point p1 = new Point(3,0);
+		 System.out.print(circle1.contain(p1) == true ? "在圆内":"在圆外");
+		
+	}
+}
+ class Point
+{
+	 public Point() 
+	 {
+		  
+	 }
+	 public Point (int x,int y ) 
+	 {
+		 this.x = x;
+		 this.y = y;
+	 }
+	int x;
+	int y;
+}

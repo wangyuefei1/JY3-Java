@@ -1,0 +1,21 @@
+package practice;
+
+public class Person {
+
+		int num;
+		String name;
+		String sex;
+		int age;
+		String personnum;
+		String address;
+		boolean ismarry;
+		String phonenum;
+		String name1;
+		public boolean getmarry() {
+			return ismarry;
+		}
+		public static void main(String[] args) {
+			Person person = new Person();
+			
+		}
+}

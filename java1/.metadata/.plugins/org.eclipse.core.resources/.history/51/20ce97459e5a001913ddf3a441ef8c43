@@ -1,0 +1,24 @@
+
+package practice;
+
+public class Circle {
+	public Circle(){
+
+	}
+	int r;
+	public  double Square() {
+		return r*r*3.14;
+	}
+
+	public static void main(String[] args)
+	{
+		Circle circle = new Circle();
+		double square = circle.Square();
+		System.out.print(square);
+	}
+}
+ class Point
+{
+	int x;
+	int y;
+}

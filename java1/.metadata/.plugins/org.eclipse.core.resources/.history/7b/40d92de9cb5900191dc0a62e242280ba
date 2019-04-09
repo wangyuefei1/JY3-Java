@@ -1,0 +1,26 @@
+package practice;
+
+public class Book {
+
+	 public	static void main(String[] args)
+	 {
+		Books book1 = new Books();
+		book1.name = "Java编程思想";
+		book1.page = 687;
+		book1.author = "Bruce Eckel";
+		book1.money = 25.0;
+		System.out.print("书名: " + book1.name);
+		System.out.print("页数: " + book1.page);
+		System.out.print("作者: " + book1.author);
+		System.out.print("价格: " + book1.money);
+	 }
+	
+	 class Books{
+		 String name;
+		 int page;
+		 double money;
+		 String author;
+		 
+	 }
+	
+}

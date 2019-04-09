@@ -1,0 +1,24 @@
+public class Test1 
+{
+	public static void main(String[] args) 
+	{
+		String [] str = new String[]
+		/*str[0] = "统";
+		str[1] = "计";
+		str[2] = "一";
+		str[3] = "个";
+		str[4] = "字";
+		str[5] = "符";
+		str[6] = "串";
+		str[7] = "中";*/
+		{"统","计","一","个","字","符","串","中","字","符","所","在","的","所","有","位","置"};
+		for(int i=0;i<str.length;i++ )
+		{	
+			//System.out.print(str[i]);
+			if(str[i]=="字")
+				{
+					System.out.print(i);
+				}	
+		}
+	}
+}
