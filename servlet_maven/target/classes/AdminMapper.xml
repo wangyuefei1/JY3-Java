@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用接口注册，命名空间要写入接口完全限定名 -->
+<mapper namespace="com.neuedu.mapper.AdminMapper">
+
+	<sql id="sqlbase">
+		select id,aname,apwd
+	</sql>
+	<select id="findAll" resultType="Admin">
+		<include refid="sqlbase"></include>
+		 from t_admin
+	</select>
+	<select id="findById" resultType="Admin"  parameterType="int">
+		<include refid="sqlbase"></include>
+		 from t_admin where id=#{id}
+	</select>
+	<insert id ="insert" parameterType="Admin">
+	     insert into t_admin values(null,#{aname},md5(#{apwd})) 
+	</insert>
+	<delete id ="delete" parameterType="int">
+	     delete from t_admin where id=#{id} 
+	</delete>
+	<update id="update" parameterType="Admin">
+		update t_admin set aname=#{aname},apwd=md5(#{apwd})
+		where  id=#{id}
+	</update>
+	<select id="findByAname" parameterType="string" resultType="Admin">
+		<include refid="sqlbase"></include>
+		 from t_admin
+		 where aname=#{aname}
+	</select>
+</mapper>

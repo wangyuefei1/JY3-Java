@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用接口注册，命名空间要写入接口完全限定名 -->
+<mapper namespace="com.neuedu.mapper.CityMapper">
+
+	
+	<select id="findAll" resultType="Province">
+		select
+		     id,
+		     pid,
+		     pname
+		from
+			provinces
+	</select>
+	<select id="findByPid" parameterType="String" resultType="City">
+		select
+		     c.id,
+		     c.cid,
+		     c.cname,
+		     c.pid,
+		     p.id,
+		     p.pid,
+		     p.pname
+		from  cities c join provinces p  on c.pid=p.pid
+		where p.pid=#{pid}
+	</select>
+	<select id="findByCid" parameterType="String" resultType="Area">
+		select
+		     a.id,
+		     a.aid,
+		     a.aname,
+		     a.cid,
+		     c.id,
+		     c.cid,
+		     c.cname,
+		     c.pid
+		from  areas a join cities c  on a.cid=c.cid
+		where c.cid=#{cid}
+	</select>
+</mapper>
