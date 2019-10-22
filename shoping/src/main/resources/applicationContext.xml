@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <context:annotation-config />
+    <context:component-scan base-package="com.neuedu.*"/>
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" >
+            <value >${jdbc.url}</value>
+        </property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+<!--    sqlsession工厂-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="typeAliasesPackage" value="com.neuedu.pojo"></property>
+        <property name="mapperLocations" value="classpath:com/neuedu/dao/*.xml "></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <!--pageHelp分页配置-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+<!--    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">-->
+<!--        <constructor-arg value="sqlSessionFactory" index="0"></constructor-arg>-->
+<!--    </bean>-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.neuedu.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+<!--    启动AOP注解-->
+<!--    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>-->
+
+<!--    <bean id="userserviceimpl" class="com.neuedu.service.impl.Userserviceimpl"></bean>-->
+<!--    <bean id="trancationAop" class="com.neuedu.aop.TrancationAop"></bean>-->
+
+<!--    定义切入点-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="perform" expression="execution(* com.neuedu.service.Userservice.*(..))"/>-->
+<!--        <aop:aspect ref="trancationAop">-->
+<!--            <aop:before method="begin" pointcut-ref="perform"></aop:before>-->
+<!--            <aop:after-returning method="commit" pointcut-ref="perform" returning="val"></aop:after-returning>-->
+<!--            <aop:after-throwing method="exceptionMethod" pointcut-ref="perform" throwing="throwable"></aop:after-throwing>-->
+<!--            <aop:after method="finallyMethod" pointcut-ref="perform" ></aop:after>-->
+<!--            <aop:around method="aroundMethod" pointcut-ref="perform" ></aop:around>-->
+<!--        </aop:aspect>-->
+
+<!--    </aop:config>-->
+
+
+<!--    事务管理器-->
+<!--    <bean id="transactionManager "  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        <property name="dataSource" ref="dataSource"></property>-->
+<!--     </bean>-->
+<!--&lt;!&ndash;    事务管理模板&ndash;&gt;-->
+<!--    <bean id="transactionTemplate " class="org.springframework.transaction.support.TransactionTemplate">-->
+<!--        <property name="transactionManager" ref="transactionManager "></property>-->
+<!--    </bean>-->
+<!--    <bean id="accountService" class="com.neuedu.service.impl.AccountServiceImpl">-->
+<!--        <property name="transactionTemplate" ref="transactionTemplate "></property>-->
+<!--    </bean>-->
+<!--    <tx:advice id="tx" transaction-manager="transactionManager ">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="transfer" propagation="REQUIRED" isolation="DEFAULT" read-only="false"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="perform" expression="execution(* com.neuedu.service.AccountService.*(..))"/>-->
+<!--        <aop:advisor advice-ref="tx" pointcut-ref="perform"></aop:advisor>-->
+<!--    </aop:config>-->
+<!--        <tx:annotation-driven transaction-manager="transactionManager " />-->
+
+</beans>
